@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Early-Warning Model for U.S. Housing Price Surges - CS 4641 Project</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/date-fns@2.29.3/index.min.js"></script>
+</head>
+
+<body>
+  <!-- Navigation Header -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <h2>CS 4641 Project</h2>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#problem">Problem</a></li>
+        <li><a href="#methods">Methods</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#references">References</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Early-Warning Model for U.S. Housing Price Surges</h1>
+      <p class="hero-subtitle">Predicting Future Housing Market Opportunities Using Machine Learning</p>
+      <div class="hero-badges">
+        <span class="badge">Machine Learning</span>
+        <span class="badge">Real Estate Analytics</span>
+        <span class="badge">Time Series Prediction</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Introduction Section -->
+    <section id="introduction" class="section">
+      <h2>1. Introduction / Background</h2>
+      <div class="content-grid">
+        <div class="text-content">
+          <p>Housing prices often jump after local shocks (jobs, migration, supply constraints). We aim to predict,
+            <strong>ahead of time</strong>, which ZIPs/counties will experience <strong>future surges</strong> in home
+            values. Hedonic and spatial-econometric literature shows prices depend on amenities and neighboring markets
+            <a href="#ref1">[1]</a>, <a href="#ref2">[2]</a>; supply elasticity and constraints amplify cycles <a
+              href="#ref3">[3]</a>. Modern ensembles capture non-linear, interacting drivers <a href="#ref4">[4]</a>, <a
+              href="#ref5">[5]</a>.</p>
+        </div>
+      </div>
+
+      <h3>Dataset & Features</h3>
+      <div class="dataset-grid">
+        <div class="dataset-card">
+          <h4>🏠 Home Values</h4>
+          <p><strong>Zillow ZHVI</strong> time series (ZIP/county)</p>
+          <a href="https://www.zillow.com/research/data/" target="_blank" class="dataset-link">Zillow Research Data
+            →</a>
+        </div>
+        <div class="dataset-card">
+          <h4>📊 Transactions</h4>
+          <p><strong>Redfin Data Center</strong> (sales, DOM, list-to-sale)</p>
+          <a href="https://redfin.com/news/data-center/" target="_blank" class="dataset-link">Redfin Data Center →</a>
+        </div>
+        <div class="dataset-card">
+          <h4>👥 Demographics</h4>
+          <p><strong>ACS 5-year</strong> (income, education, age, renters/owners)</p>
+          <a href="https://api.census.gov/data.html" target="_blank" class="dataset-link">Census API →</a>
+        </div>
+        <div class="dataset-card">
+          <h4>💼 Labor Market</h4>
+          <p><strong>BLS LAUS/QCEW</strong> (unemployment, job growth)</p>
+          <a href="https://www.bls.gov/data/" target="_blank" class="dataset-link">BLS Data →</a>
+        </div>
+        <div class="dataset-card">
+          <h4>💰 Interest Rates</h4>
+          <p><strong>Freddie Mac PMMS</strong> (mortgage rates)</p>
+          <a href="https://www.freddiemac.com/pmms" target="_blank" class="dataset-link">Freddie Mac PMMS →</a>
+        </div>
+      </div>
+
+      <div class="features-section">
+        <h4>Key Features</h4>
+        <ul class="features-list">
+          <li>Lagged YoY %Δ ZHVI</li>
+          <li>Sales volume/inventory metrics</li>
+          <li>Days on Market (DOM)</li>
+          <li>Price-to-income ratios</li>
+          <li>Rent-to-price ratios</li>
+          <li>Unemployment/job growth indicators</li>
+          <li>Construction permits (if available)</li>
+          <li>Spatial lags of key signals</li>
+          <li>Supply-elasticity proxies (geographic constraints)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Problem Definition -->
+    <section id="problem" class="section">
+      <h2>2. Problem Definition</h2>
+      <div class="problem-container">
+        <div class="problem-statement">
+          <h3>Problem Statement</h3>
+          <p>Given data up to time <em>t</em>, predict whether area <em>i</em> will be in the <strong>top
+              decile/quintile of ZHVI YoY growth</strong> over <em>t+6…t+12 months</em> (classification), and/or
+            forecast <strong>future YoY %Δ</strong> (regression).</p>
+        </div>
+        <div class="motivation">
+          <h3>Motivation</h3>
+          <p>Identify investable areas <strong>before</strong> broad appreciation (e.g., pre-2020 Miami-like runs). Use
+            probability-ranked screens for capital allocation and due diligence.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Methods Section -->
+    <section id="methods" class="section">
+      <h2>3. Methods</h2>
+
+      <div class="methods-container">
+        <div class="preprocessing-section">
+          <h3>Data Preprocessing (3+ Methods)</h3>
+          <div class="method-cards">
+            <div class="method-card">
+              <h4>📅 Time Alignment & Panel Integrity</h4>
+              <p>Train/validation/test <strong>forward-chaining</strong> split to prevent data leakage</p>
+            </div>
+            <div class="method-card">
+              <h4>🎯 Target Construction</h4>
+              <p>Future surge label (top 10/20% YoY at horizon) and <strong>stationarization</strong> (YoY)</p>
+            </div>
+            <div class="method-card">
+              <h4>🔄 Lag Features</h4>
+              <p><strong>Lag features</strong> (1–12m), rolling statistics</p>
+            </div>
+            <div class="method-card">
+              <h4>🗺️ Spatial Features</h4>
+              <p>Contiguity/nearest-neighbor lags (queen/knn)</p>
+            </div>
+            <div class="method-card">
+              <h4>⚖️ Scaling & Encoding</h4>
+              <p>StandardScaler, OneHot/Ordinal encoding</p>
+            </div>
+            <div class="method-card">
+              <h4>🛡️ Outlier Robustness</h4>
+              <p>Winsorization and missing imputation</p>
+            </div>
+            <div class="method-card">
+              <h4>🔒 Leakage Control</h4>
+              <p>Forbid post-t information; census features lagged to release dates</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="models-section">
+          <h3>Machine Learning Models (3+ Algorithms)</h3>
+          <div class="model-cards">
+            <div class="model-card">
+              <h4>📈 Elastic Net</h4>
+              <p><code>sklearn.linear_model.SGDRegressor/LogisticRegressionCV</code></p>
+              <p class="model-benefit">Provides interpretable elasticities and feature selection</p>
+            </div>
+            <div class="model-card">
+              <h4>🌳 Gradient Boosting / XGBoost</h4>
+              <p><code>HistGradientBoostingClassifier</code>, <code>XGBClassifier</code></p>
+              <p class="model-benefit">Captures non-linear interactions and threshold effects</p>
+            </div>
+            <div class="model-card">
+              <h4>🌲 Random Forest</h4>
+              <p><code>RandomForestClassifier</code></p>
+              <p class="model-benefit">Robust ensemble method with built-in feature importance</p>
+            </div>
+            <div class="model-card">
+              <h4>⏰ Temporal Models</h4>
+              <p>LightGBM with time features; optional <strong>change-point</strong> flags (ruptures)</p>
+              <p class="model-benefit">Specialized for time series patterns</p>
+            </div>
+            <div class="model-card">
+              <h4>🎯 Unsupervised Learning</h4>
+              <p><strong>K-Means/GMM</strong> for market regime discovery</p>
+              <p class="model-benefit">Market regime clustering for segment-wise analysis</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="effectiveness-section">
+          <h3>Why These Methods Are Effective</h3>
+          <p>Elastic Net gives interpretable elasticities; trees/boosting capture non-linear interactions and threshold
+            effects; spatial terms model diffusion; regime clustering stabilizes performance across cycles <a
+              href="#ref1">[1]</a>–<a href="#ref5">[5]</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" class="section">
+      <h2>4. (Potential) Results & Discussion</h2>
+
+      <div class="metrics-container">
+        <h3>Quantitative Metrics (3+ Metrics)</h3>
+        <div class="metrics-grid">
+          <div class="metric-category">
+            <h4>Classification Metrics</h4>
+            <ul>
+              <li><strong>AUROC</strong> - Area Under ROC Curve</li>
+              <li><strong>PR-AUC</strong> - Precision-Recall AUC</li>
+              <li><strong>Precision@K / Recall@K</strong> - Top-K areas for investment</li>
+              <li><strong>Brier Score</strong> - Probability calibration</li>
+            </ul>
+          </div>
+          <div class="metric-category">
+            <h4>Regression Metrics</h4>
+            <ul>
+              <li><strong>RMSE/MAE</strong> - Error on future YoY</li>
+              <li><strong>Directional Accuracy</strong> - Trend prediction</li>
+            </ul>
+          </div>
+          <div class="metric-category">
+            <h4>Financial Metrics</h4>
+            <ul>
+              <li><strong>Backtest</strong> - Cumulative excess return vs baseline</li>
+              <li><strong>Sharpe Ratio</strong> - Risk-adjusted returns</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="goals-section">
+        <h3>Project Goals</h3>
+        <div class="goals-grid">
+          <div class="goal-card">
+            <h4>🎯 Performance Targets</h4>
+            <ul>
+              <li>PR-AUC ≥ 0.35 (imbalanced dataset)</li>
+              <li>Precision@K ≥ 0.50 for K=100 ZIPs @ 6–12m horizon</li>
+              <li>Calibrated probabilities (Brier ≤ 0.12)</li>
+              <li>Stable lift across market regimes</li>
+            </ul>
+          </div>
+          <div class="goal-card">
+            <h4>⚖️ Ethics & Sustainability</h4>
+            <ul>
+              <li>Avoid models that systematically redline</li>
+              <li>Monitor performance parity across income/education strata</li>
+              <li>Document release-lag handling</li>
+              <li>Ensure fair access to housing market insights</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="expected-results">
+        <h3>Expected Results</h3>
+        <p>Gradient boosting with spatial/lagged features outperforms linear baselines; surge probabilities cluster
+          along job/inventory shocks and supply-constraints; calibrated scores enable practical ranking of "pre-run"
+          areas.</p>
+      </div>
+    </section>
+
+    <!-- References Section -->
+    <section id="references" class="section">
+      <h2>5. References</h2>
+      <div class="references-container">
+        <ol class="references-list">
+          <li id="ref1">S. Rosen, "Hedonic Prices and Implicit Markets," <em>Journal of Political Economy</em>, 1974.
+          </li>
+          <li id="ref2">L. Anselin, <em>Spatial Econometrics: Methods and Models</em>, 1988.</li>
+          <li id="ref3">A. Saiz, "The Geographic Determinants of Housing Supply," <em>Quarterly Journal of
+              Economics</em>, 2010.</li>
+          <li id="ref4">J. H. Friedman, "Greedy Function Approximation: A Gradient Boosting Machine," <em>Annals of
+              Statistics</em>, 2001.</li>
+          <li id="ref5">T. Hastie, R. Tibshirani, and J. Friedman, <em>The Elements of Statistical Learning</em>, 2009.
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="section">
+      <h2>Project Timeline</h2>
+
+      <div class="gantt-container">
+        <h3>Gantt Chart (12-week project)</h3>
+        <div class="gantt-chart">
+          <canvas id="ganttChart" width="800" height="400"></canvas>
+        </div>
+      </div>
+
+      <div class="contribution-section">
+        <h3>Contribution Table</h3>
+        <div class="contribution-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Proposal Contributions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ivan</td>
+                <td>Problem/motivation; targets; metrics/backtest</td>
+              </tr>
+              <tr>
+                <td>Teammate A</td>
+                <td>Data pipeline; spatial features; leakage controls</td>
+              </tr>
+              <tr>
+                <td>Teammate B</td>
+                <td>Model survey; tuning; calibration & fairness</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="submission-checklist">
+        <h3>Submission Checklist</h3>
+        <div class="checklist-grid">
+          <div class="checklist-item">
+            <span class="checkmark">✅</span>
+            <strong>Report:</strong> GitHub Pages (&lt;800 words for §§1–4)
+          </div>
+          <div class="checklist-item">
+            <span class="checkmark">✅</span>
+            <strong>Video (≤3 min, YouTube Unlisted):</strong> Problem→Data→Methods→Metrics→Results
+          </div>
+          <div class="checklist-item">
+            <span class="checkmark">✅</span>
+            <strong>GitHub (GT Enterprise, private):</strong> add teammates + mentor
+          </div>
+          <div class="checklist-item">
+            <span class="checkmark">☐</span>
+            <strong>Awards:</strong> Opt-in ☐ Yes ☐ No
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2024 CS 4641 Project - Georgia Institute of Technology</p>
+      <p>Early-Warning Model for U.S. Housing Price Surges</p>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+
+</html>

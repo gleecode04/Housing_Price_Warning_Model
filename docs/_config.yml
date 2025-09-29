@@ -1,0 +1,99 @@
+# GitHub Pages Configuration for CS 4641 Project
+
+# Basic site information
+title: "Early-Warning Model for U.S. Housing Price Surges"
+description: "CS 4641 Machine Learning Project - Predicting Future Housing Market Opportunities"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# GitHub Pages specific settings
+repository: "CS-4641-project"
+github_username: "" # Will be populated based on repository
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# SEO and social media
+author:
+  name: "CS 4641 Project Team"
+  email: ""
+
+# Social media and sharing
+social:
+  name: "CS 4641 Project Team"
+  links: []
+
+# Google Analytics (optional)
+# google_analytics: "UA-XXXXXXXXX-X"
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - .gitignore
+  - .git/
+
+# Include files
+include:
+  - _pages
+
+# Collections (if needed for future expansion)
+collections:
+  pages:
+    output: true
+    permalink: /:name/
+
+# Default layouts and settings
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# Theme (using default GitHub Pages theme)
+theme: minima
+
+# Custom variables for the project
+project:
+  name: "Early-Warning Model for U.S. Housing Price Surges"
+  course: "CS 4641"
+  semester: "Fall 2024"
+  institution: "Georgia Institute of Technology"
+
+# Contact information
+contact:
+  email: ""
+  github: ""
+
+# Project metadata
+project_metadata:
+  type: "Machine Learning"
+  domain: "Real Estate Analytics"
+  techniques:
+    - "Supervised Learning"
+    - "Time Series Analysis"
+    - "Spatial Analysis"
+    - "Ensemble Methods"
+  datasets:
+    - "Zillow ZHVI"
+    - "Redfin Data Center"
+    - "Census ACS"
+    - "BLS Labor Statistics"
+    - "Freddie Mac PMMS"
