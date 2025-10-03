@@ -174,11 +174,9 @@ a:hover {
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(
-    135deg,
-    var(--primary-color) 0%,
-    var(--primary-dark) 100%
-  );
+  background: linear-gradient(135deg,
+      var(--primary-color) 0%,
+      var(--primary-dark) 100%);
   color: white;
   padding: var(--spacing-20) var(--spacing-6);
   text-align: center;
@@ -241,7 +239,6 @@ a:hover {
 .metrics-grid,
 .goals-grid {
   display: grid;
-  gap: var(--spacing-6);
 }
 
 .dataset-grid {
@@ -252,11 +249,13 @@ a:hover {
 .metrics-grid {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   margin-top: var(--spacing-6);
+  margin-bottom: var(--spacing-6);
 }
 
 .goals-grid {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   margin-top: var(--spacing-6);
+  gap: var(--spacing-6);
 }
 
 /* Cards */
@@ -370,6 +369,20 @@ a:hover {
   border-radius: var(--border-radius-lg);
   border-left: 4px solid var(--primary-color);
 }
+
+.motivation ul {
+  margin-left: var(--spacing-10);
+  margin-top: var(--spacing-4);
+  list-style-type: disc;
+  padding-left: var(--spacing-6);
+}
+
+.motivation li {
+  margin-bottom: var(--spacing-3);
+  line-height: 1.6;
+  display: list-item;
+}
+
 
 /* References */
 .references-container {
@@ -502,7 +515,8 @@ a:hover {
 /* Responsive Design */
 @media (max-width: 768px) {
   .nav-menu {
-    display: none; /* Simple mobile approach - could be enhanced with hamburger menu */
+    display: none;
+    /* Simple mobile approach - could be enhanced with hamburger menu */
   }
 
   .hero {
@@ -521,6 +535,8 @@ a:hover {
   .metrics-grid,
   .goals-grid {
     grid-template-columns: 1fr;
+    margin-bottom: var(--spacing-6);
+    margin-top: var(--spacing-6);
   }
 
   .method-cards,
@@ -564,6 +580,7 @@ a:hover {
 
 /* Print Styles */
 @media print {
+
   .navbar,
   .footer {
     display: none;
