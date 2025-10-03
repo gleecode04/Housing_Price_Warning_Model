@@ -46,225 +46,224 @@
   <main class="container">
     <!-- Introduction Section -->
     <section id="introduction" class="section">
-      <h2>1. Introduction / Background</h2>
+      <h2>1. Introduction </h2>
       <div class="content-grid">
         <div class="text-content">
-          <p>Housing prices often jump after local shocks (jobs, migration, supply constraints). We aim to predict,
-            <strong>ahead of time</strong>, which ZIPs/counties will experience <strong>future surges</strong> in home
-            values. Hedonic and spatial-econometric literature shows prices depend on amenities and neighboring markets
-            <a href="#ref1">[1]</a>, <a href="#ref2">[2]</a>; supply elasticity and constraints amplify cycles <a
-              href="#ref3">[3]</a>. Modern ensembles capture non-linear, interacting drivers <a href="#ref4">[4]</a>, <a
-              href="#ref5">[5]</a>.</p>
+          <p>Housing markets are shaped by <strong>demographic, economic, and supply-side shifts</strong>, with city officials
+              and policymakers needing to anticipate <strong>surges and dips</strong> to design effective policy responses.
+              Prior research highlights the influence of neighborhood amenities and surrounding property values
+              <a href="#ref1">[1]</a>, <a href="#ref2">[2]</a>, while supply elasticity and geographic constraints have been shown
+              to magnify market fluctuations <a href="#ref3">[3]</a>. Machine learning studies suggest that ensemble approaches,
+              particularly gradient boosting, excel at capturing <strong>nonlinear interactions</strong> among housing market
+              drivers <a href="#ref4">[4]</a>. This project aims to forecast, <strong>6–12 months ahead</strong>, which ZIP
+              codes and county regions are likely to experience appreciation or depreciation, using time-series methods, spatial
+              econometrics, and both regression and classification models.</p>
+
         </div>
       </div>
 
       <h3>Dataset & Features</h3>
-      <div class="dataset-grid">
-        <div class="dataset-card">
-          <h4>🏠 Home Values</h4>
-          <p><strong>Zillow ZHVI</strong> time series (ZIP/county)</p>
-          <a href="https://www.zillow.com/research/data/" target="_blank" class="dataset-link">Zillow Research Data
-            →</a>
+      <p>We plan to use the following (publicly available) datasets and metrics in our study:</p>
+
+        <div class="dataset-grid">
+          <div class="dataset-card">
+            <h4>Home Value</h4>
+            <p>Zillow Home Value Index will be used by ZIP/county to track housing market prices.</p>
+            <a href="https://www.zillow.com/research/data/" target="_blank" class="dataset-link">Zillow Research Data</a>
+          </div>
+          <div class="dataset-card">
+            <h4>Transactions</h4>
+            <p>We will use the RedFin Data Center to track sales, days on market, and list:sale ratio.</p>
+            <a href="https://redfin.com/news/data-center/" target="_blank" class="dataset-link">Redfin Data Center</a>
+          </div>
+          <div class="dataset-card">
+            <h4>Demographics</h4>
+            <p>The U.S. Census Bureau ACS data will be used to get 5-year estimates on demographic income, education, and rent/owner mix.</p>
+            <a href="https://api.census.gov/data.html" target="_blank" class="dataset-link">Census API</a>
+          </div>
+          <div class="dataset-card">
+            <h4>Labor Market</h4>
+            <p>Bureau of Labor Statistics LAUS and QCEW datasets will be used to track unemployment rates and job growth in these areas.</p>
+            <a href="https://www.bls.gov/data/" target="_blank" class="dataset-link">BLS Data</a>
+          </div>
+          <div class="dataset-card">
+            <h4>Interest Rates</h4>
+            <p>We will use the Freddie Max Primary Mortgage Market Survey to track interest rates.</p>
+            <a href="https://www.freddiemac.com/pmms" target="_blank" class="dataset-link">Freddie Mac PMMS</a>
+          </div>
         </div>
-        <div class="dataset-card">
-          <h4>📊 Transactions</h4>
-          <p><strong>Redfin Data Center</strong> (sales, DOM, list-to-sale)</p>
-          <a href="https://redfin.com/news/data-center/" target="_blank" class="dataset-link">Redfin Data Center →</a>
-        </div>
-        <div class="dataset-card">
-          <h4>👥 Demographics</h4>
-          <p><strong>ACS 5-year</strong> (income, education, age, renters/owners)</p>
-          <a href="https://api.census.gov/data.html" target="_blank" class="dataset-link">Census API →</a>
-        </div>
-        <div class="dataset-card">
-          <h4>💼 Labor Market</h4>
-          <p><strong>BLS LAUS/QCEW</strong> (unemployment, job growth)</p>
-          <a href="https://www.bls.gov/data/" target="_blank" class="dataset-link">BLS Data →</a>
-        </div>
-        <div class="dataset-card">
-          <h4>💰 Interest Rates</h4>
-          <p><strong>Freddie Mac PMMS</strong> (mortgage rates)</p>
-          <a href="https://www.freddiemac.com/pmms" target="_blank" class="dataset-link">Freddie Mac PMMS →</a>
-        </div>
-      </div>
+
 
       <div class="features-section">
         <h4>Key Features</h4>
-        <ul class="features-list">
-          <li>Lagged YoY %Δ ZHVI</li>
-          <li>Sales volume/inventory metrics</li>
-          <li>Days on Market (DOM)</li>
-          <li>Price-to-income ratios</li>
-          <li>Rent-to-price ratios</li>
-          <li>Unemployment/job growth indicators</li>
-          <li>Construction permits (if available)</li>
-          <li>Spatial lags of key signals</li>
-          <li>Supply-elasticity proxies (geographic constraints)</li>
-        </ul>
+        <p style="margin-bottom: 1.5em;">A number of primary factors will be the focus of attention due to previous literature. These include <strong>lagged 
+        year-over-year (YoY) price growth</strong>, <strong>sales/inventory over time</strong>, <strong>days on market</strong>, <strong>price:income</strong> and 
+        <strong>rent:price</strong> ratios, <strong>local labor market conditions</strong>, <strong>building permits</strong>, and <strong>spatial lags</strong>.</p>
       </div>
     </section>
 
     <!-- Problem Definition -->
     <section id="problem" class="section">
       <h2>2. Problem Definition</h2>
-      <div class="problem-container">
-        <div class="problem-statement">
-          <h3>Problem Statement</h3>
-          <p>Given data up to time <em>t</em>, predict whether area <em>i</em> will be in the <strong>top
-              decile/quintile of ZHVI YoY growth</strong> over <em>t+6…t+12 months</em> (classification), and/or
-            forecast <strong>future YoY %Δ</strong> (regression).</p>
-        </div>
-        <div class="motivation">
-          <h3>Motivation</h3>
-          <p>Identify investable areas <strong>before</strong> broad appreciation (e.g., pre-2020 Miami-like runs). Use
-            probability-ranked screens for capital allocation and due diligence.</p>
-        </div>
+
+      <div class="problem-statement" style="margin-bottom: 2em;">
+        <h3>Problem Statement</h3>
+        <p>
+          Given data up to a time, <em>t</em>, predict if a certain area, <em>a</em>, will be in the 
+          <strong>top quintile of YoY home price growth</strong> in the following 6–12 months 
+          and predict the <strong>YoY growth percentage change</strong>, which are classification 
+          and regression tasks, respectively.
+        </p>
+      </div>
+
+      <div class="motivation">
+        <h3>Motivation</h3>
+        <p>
+          There are a number of benefits to predicting these high and low-growth markets ahead of time. 
+          Some of them include:
+        </p>
+        <ul>
+          <li>
+            Individuals interested in investments can allocate the capital necessary to purchase 
+            properties before large-scale increases in market prices
+          </li>
+          <li>
+            Policy makers are able to predict effects of market changes (gentrification, crime, etc.) 
+            and implement measures to promote safety, affordability, and community
+          </li>
+          <li>
+            Economists and researchers in the field are able to gain insight into the signals that 
+            result in large-scale market shifts, contributing to the overall housing economy knowledge base
+          </li>
+        </ul>
+        <p>
+          The study is aimed at emphasizing <strong>practical utility</strong>, or producing precise, 
+          probability-based signals to verify ZIP codes for policy attention or investment opportunity.
+        </p>
       </div>
     </section>
 
-    <!-- Methods Section -->
-    <section id="methods" class="section">
-      <h2>3. Methods</h2>
 
-      <div class="methods-container">
-        <div class="preprocessing-section">
-          <h3>Data Preprocessing (3+ Methods)</h3>
-          <div class="method-cards">
-            <div class="method-card">
-              <h4>📅 Time Alignment & Panel Integrity</h4>
-              <p>Train/validation/test <strong>forward-chaining</strong> split to prevent data leakage</p>
-            </div>
-            <div class="method-card">
-              <h4>🎯 Target Construction</h4>
-              <p>Future surge label (top 10/20% YoY at horizon) and <strong>stationarization</strong> (YoY)</p>
-            </div>
-            <div class="method-card">
-              <h4>🔄 Lag Features</h4>
-              <p><strong>Lag features</strong> (1–12m), rolling statistics</p>
-            </div>
-            <div class="method-card">
-              <h4>🗺️ Spatial Features</h4>
-              <p>Contiguity/nearest-neighbor lags (queen/knn)</p>
-            </div>
-            <div class="method-card">
-              <h4>⚖️ Scaling & Encoding</h4>
-              <p>StandardScaler, OneHot/Ordinal encoding</p>
-            </div>
-            <div class="method-card">
-              <h4>🛡️ Outlier Robustness</h4>
-              <p>Winsorization and missing imputation</p>
-            </div>
-            <div class="method-card">
-              <h4>🔒 Leakage Control</h4>
-              <p>Forbid post-t information; census features lagged to release dates</p>
-            </div>
-          </div>
+<!-- Methods Section -->
+<section id="methods" class="section">
+  <h2>3. Methods</h2>
+
+  <div class="methods-container">
+    <div class="preprocessing-section">
+      <h3>Data Preprocessing</h3>
+      <p>A number of techniques will be utilized to ensure accurate predictions and validity:</p>
+      <div class="method-cards">
+        <div class="method-card">
+          <h4>Time Alignment & Forward Chaining Splits</h4>
+          <p>Helps avoid lookahead bias by aligning train/test data by time.</p>
         </div>
-
-        <div class="models-section">
-          <h3>Machine Learning Models (3+ Algorithms)</h3>
-          <div class="model-cards">
-            <div class="model-card">
-              <h4>📈 Elastic Net</h4>
-              <p><code>sklearn.linear_model.SGDRegressor/LogisticRegressionCV</code></p>
-              <p class="model-benefit">Provides interpretable elasticities and feature selection</p>
-            </div>
-            <div class="model-card">
-              <h4>🌳 Gradient Boosting / XGBoost</h4>
-              <p><code>HistGradientBoostingClassifier</code>, <code>XGBClassifier</code></p>
-              <p class="model-benefit">Captures non-linear interactions and threshold effects</p>
-            </div>
-            <div class="model-card">
-              <h4>🌲 Random Forest</h4>
-              <p><code>RandomForestClassifier</code></p>
-              <p class="model-benefit">Robust ensemble method with built-in feature importance</p>
-            </div>
-            <div class="model-card">
-              <h4>⏰ Temporal Models</h4>
-              <p>LightGBM with time features; optional <strong>change-point</strong> flags (ruptures)</p>
-              <p class="model-benefit">Specialized for time series patterns</p>
-            </div>
-            <div class="model-card">
-              <h4>🎯 Unsupervised Learning</h4>
-              <p><strong>K-Means/GMM</strong> for market regime discovery</p>
-              <p class="model-benefit">Market regime clustering for segment-wise analysis</p>
-            </div>
-          </div>
+        <div class="method-card">
+          <h4>Target Construction</h4>
+          <p>Define what qualifies as a ‘surge’ and stationarize the series with YoY transformations.</p>
         </div>
-
-        <div class="effectiveness-section">
-          <h3>Why These Methods Are Effective</h3>
-          <p>Elastic Net gives interpretable elasticities; trees/boosting capture non-linear interactions and threshold
-            effects; spatial terms model diffusion; regime clustering stabilizes performance across cycles <a
-              href="#ref1">[1]</a>–<a href="#ref5">[5]</a>.</p>
+        <div class="method-card">
+          <h4>Lag Features & Rolling Statistics</h4>
+          <p>Ensures that time-based features are not overlooked.</p>
+        </div>
+        <div class="method-card">
+          <h4>Spatial Features</h4>
+          <p>Create proximal-based lags using clustering and K-nearest neighbors.</p>
+        </div>
+        <div class="method-card">
+          <h4>Scaling & Encoding</h4>
+          <p>For consistency in data, OneHot encodings will be used.</p>
+        </div>
+        <div class="method-card">
+          <h4>Outlier Robustness</h4>
+          <p>Account for extraneous datapoints via winsorization and imputing missing values.</p>
+        </div>
+        <div class="method-card">
+          <h4>Leakage Controls</h4>
+          <p>Census variables will be lagged accordingly to account for processing/release delays.</p>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- Results Section -->
-    <section id="results" class="section">
-      <h2>4. (Potential) Results & Discussion</h2>
-
-      <div class="metrics-container">
-        <h3>Quantitative Metrics (3+ Metrics)</h3>
-        <div class="metrics-grid">
-          <div class="metric-category">
-            <h4>Classification Metrics</h4>
-            <ul>
-              <li><strong>AUROC</strong> - Area Under ROC Curve</li>
-              <li><strong>PR-AUC</strong> - Precision-Recall AUC</li>
-              <li><strong>Precision@K / Recall@K</strong> - Top-K areas for investment</li>
-              <li><strong>Brier Score</strong> - Probability calibration</li>
-            </ul>
-          </div>
-          <div class="metric-category">
-            <h4>Regression Metrics</h4>
-            <ul>
-              <li><strong>RMSE/MAE</strong> - Error on future YoY</li>
-              <li><strong>Directional Accuracy</strong> - Trend prediction</li>
-            </ul>
-          </div>
-          <div class="metric-category">
-            <h4>Financial Metrics</h4>
-            <ul>
-              <li><strong>Backtest</strong> - Cumulative excess return vs baseline</li>
-              <li><strong>Sharpe Ratio</strong> - Risk-adjusted returns</li>
-            </ul>
-          </div>
+    <div class="models-section">
+      <h3>Machine Learning Models</h3>
+      <p>Three models will be primarily used:</p>
+      <div class="model-cards">
+        <div class="model-card">
+          <h4>Elastic Net Regression and Classification</h4>
+          <p><code>sklearn.linear_model</code> provides accurate, elegant, and interpretable elastics.</p>
+        </div>
+        <div class="model-card">
+          <h4>Random Forest</h4>
+          <p><code>RandomForestClassifier</code> evaluates feature importance effectively.</p>
+        </div>
+        <div class="model-card">
+          <h4>Gradient Boosting Trees/XGBoost</h4>
+          <p><code>XGBClassifier</code> captures nonlinear interactions of features very effectively.</p>
         </div>
       </div>
+      <p>
+        The combination of these three (supervised) models will comprehensively encapsulate the complex interactions of
+        the above variables that we are using to predict YoY growth, ensuring that all possible features and signals are
+        incorporated and evaluated.
+      </p>
+    </div>
+  </div>
+</section>
 
-      <div class="goals-section">
-        <h3>Project Goals</h3>
-        <div class="goals-grid">
-          <div class="goal-card">
-            <h4>🎯 Performance Targets</h4>
-            <ul>
-              <li>PR-AUC ≥ 0.35 (imbalanced dataset)</li>
-              <li>Precision@K ≥ 0.50 for K=100 ZIPs @ 6–12m horizon</li>
-              <li>Calibrated probabilities (Brier ≤ 0.12)</li>
-              <li>Stable lift across market regimes</li>
-            </ul>
-          </div>
-          <div class="goal-card">
-            <h4>⚖️ Ethics & Sustainability</h4>
-            <ul>
-              <li>Avoid models that systematically redline</li>
-              <li>Monitor performance parity across income/education strata</li>
-              <li>Document release-lag handling</li>
-              <li>Ensure fair access to housing market insights</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+<!-- Results Section -->
+<section id="results" class="section">
+  <h2>4. Results & Discussion</h2>
 
-      <div class="expected-results">
-        <h3>Expected Results</h3>
-        <p>Gradient boosting with spatial/lagged features outperforms linear baselines; surge probabilities cluster
-          along job/inventory shocks and supply-constraints; calibrated scores enable practical ranking of "pre-run"
-          areas.</p>
+  <div class="metrics-container">
+    <h3>Quantitative Metrics</h3>
+    <p>
+      A number of metrics will be utilized to evaluate the models’ classification, regression and performance:
+    </p>
+    <div class="metrics-grid">
+      <div class="metric-category">
+        <h4>Classification Metrics</h4>
+        <p>
+          <strong>Precision@K</strong> and <strong>AUROC</strong> will be used to evaluate classification.
+          Precision@K is effective in evaluating the accuracy of top-ranked predictions, and AUROC measures overall accuracy across all predictions.
+        </p>
       </div>
-    </section>
+      <div class="metric-category">
+        <h4>Regression Metrics</h4>
+        <p>
+          <strong>MAE</strong> and <strong>RMSE</strong> will be used to evaluate regression. MAE captures typical error sizes, while RMSE captures the large deviations; both combined give a holistic view of accuracy.
+        </p>
+      </div>
+      <div class="metric-category">
+        <h4>Financial Backtests</h4>
+        <p>
+          <strong>Sharpe Ratio</strong> and <strong>Cumulative Excess Returns</strong> will be used for backtesting, as Sharpe measures returns relative to risk, and CER measures total return relative to a benchmark. Combined, both risk efficiency and long-term wealth accumulation are measured.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="goals-section">
+    <h3>Project Goals</h3>
+    <div class="goals-grid">
+      <div class="goal-card">
+        <ul>
+          <li>Achieve <strong>AUROC > 0.35</strong> for surge prediction</li>
+          <li>Achieve <strong>Precision@100 > 0.5</strong> for 6-12 month forecasting</li>
+          <li>Ensure high recall and sensitivity for critical segments such as surge areas to predict under-prediction of important events</li>
+          <li>Maintain integrity and fairness in testing by avoiding demographic bias, particularly in income/education strata.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="expected-results">
+    <h3>Expected Results</h3>
+    <p>
+      It is expected that the gradient boosting methods utilized, along with the lagged and spatial features, will outperform the baselines based on linear models by capturing niche, non-obvious nonlinear relationships not obviously visible in the data. Surge probability predictions will most likely cluster in areas with notable events such as employment shock, demand acceleration, and/or decreased supply. This will be reflected in the model’s ability to predict the drivers of housing stress and flourishment. It is anticipated that by ensuring a model with well-calibrated probability outputs will improve interpretability as well as ranking/classification that allow policy making and resource allocation by policymakers and investors alike.
+    </p>
+  </div>
+</section>
+
 
     <!-- References Section -->
     <section id="references" class="section">
@@ -322,27 +321,6 @@
           </table>
         </div>
       </div>
-
-      <div class="submission-checklist">
-        <h3>Submission Checklist</h3>
-        <div class="checklist-grid">
-          <div class="checklist-item">
-            <span class="checkmark">✅</span>
-            <strong>Report:</strong> GitHub Pages (&lt;800 words for §§1–4)
-          </div>
-          <div class="checklist-item">
-            <span class="checkmark">✅</span>
-            <strong>Video (≤3 min, YouTube Unlisted):</strong> Problem→Data→Methods→Metrics→Results
-          </div>
-          <div class="checklist-item">
-            <span class="checkmark">✅</span>
-            <strong>GitHub (GT Enterprise, private):</strong> add teammates + mentor
-          </div>
-          <div class="checklist-item">
-            <span class="checkmark">☐</span>
-            <strong>Awards:</strong> Opt-in ☐ Yes ☐ No
-          </div>
-        </div>
       </div>
     </section>
   </main>
