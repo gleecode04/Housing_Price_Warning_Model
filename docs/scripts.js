@@ -4,109 +4,88 @@ document.addEventListener('DOMContentLoaded', function () {
   const ganttData = {
     tasks: [
       {
-        name: 'Data Ingestion & Panel Build',
-        assignee: 'Ivan',
+        name: 'Dataset acquistion & API integration',
+        assignee: 'Husaan',
         startWeek: 1,
+        duration: 2,
+        color: '#10b981'
+      },
+      {
+        name: 'Literature review & proposal drafting',
+        assignee: 'Sanjay',
+        startWeek: 1,
+        duration: 2,
+        color: '#81141f'
+      },
+      {
+        name: 'Data preprocessing, leakage control',
+        assignee: 'Ivan',
+        startWeek: 3,
         duration: 2,
         color: '#3b82f6'
       },
       {
-        name: 'EDA & Target Specification',
-        assignee: 'Ivan',
-        startWeek: 1,
-        duration: 2,
-        color: '#3b82f6'
-      },
-      {
-        name: 'Feature Engineering (Lags, Spatial)',
-        assignee: 'Teammate A',
+        name: 'Feature engineering',
+        assignee: 'Husaan',
         startWeek: 3,
         duration: 2,
         color: '#10b981'
       },
       {
-        name: 'Leakage Checks',
-        assignee: 'Teammate A',
-        startWeek: 3,
-        duration: 2,
-        color: '#10b981'
-      },
-      {
-        name: 'Baselines (Elastic Net)',
-        assignee: 'Ivan',
+        name: 'Baseline models (Elastic Net, Random Forests)',
+        assignee: 'Chris',
         startWeek: 5,
         duration: 2,
-        color: '#3b82f6'
+        color: '#f59e0b'
       },
       {
-        name: 'GBM/XGB Initial Implementation',
-        assignee: 'Ivan',
+        name: 'Hyperparameter tuning pipelines',
+        assignee: 'Daniel',
         startWeek: 5,
         duration: 2,
-        color: '#3b82f6'
-      },
-      {
-        name: 'Hyperparameter Tuning',
-        assignee: 'Teammate B',
-        startWeek: 7,
-        duration: 2,
-        color: '#f59e0b'
-      },
-      {
-        name: 'Calibration & Spatial Ablations',
-        assignee: 'Teammate B',
-        startWeek: 7,
-        duration: 2,
-        color: '#f59e0b'
-      },
-      {
-        name: 'Regime Clustering',
-        assignee: 'Teammate A',
-        startWeek: 9,
-        duration: 1,
-        color: '#10b981'
-      },
-      {
-        name: 'Robustness by Cycle',
-        assignee: 'Teammate A',
-        startWeek: 9,
-        duration: 1,
-        color: '#10b981'
-      },
-      {
-        name: 'Backtest & Investor K-list',
-        assignee: 'Ivan',
-        startWeek: 10,
-        duration: 1,
-        color: '#3b82f6'
-      },
-      {
-        name: 'Website & Figures',
-        assignee: 'Teammate B',
-        startWeek: 11,
-        duration: 1,
-        color: '#f59e0b'
-      },
-      {
-        name: 'Draft Report',
-        assignee: 'Teammate B',
-        startWeek: 11,
-        duration: 1,
-        color: '#f59e0b'
-      },
-      {
-        name: 'Final Polish',
-        assignee: 'All',
-        startWeek: 12,
-        duration: 1,
         color: '#6366f1'
       },
       {
-        name: 'Video & Repo Setup',
-        assignee: 'All',
-        startWeek: 12,
-        duration: 1,
-        color: '#6366f1'
+        name: 'Advanced models (XGBoost, LightGBM, clustering)',
+        assignee: 'Chris + Daniel',
+        startWeek: 7,
+        duration: 2,
+        color: '#aaaaaa'
+      },
+      {
+        name: 'Calibration & fairness evaluation',
+        assignee: 'Ivan',
+        startWeek: 7,
+        duration: 2,
+        color: '#3b82f6'
+      },
+      {
+        name: 'Backtesting & financial evaluation',
+        assignee: 'Husaan + Daniel',
+        startWeek: 9,
+        duration: 2,
+        color: '#aaaaaa'
+      },
+      {
+        name: 'Results write-up',
+        assignee: 'Sanjay',
+        startWeek: 9,
+        duration: 2,
+        color: '#81141f'
+      },
+      {
+        name: 'Final report polishing and GitHub Pages deployment',
+        assignee: 'Ivan + Sanjay',
+        startWeek: 11,
+        duration: 2,
+        color: '#aaaaaa'
+      },
+      {
+        name: 'Presentation prep and rehearsal',
+        assignee: 'All Members',
+        startWeek: 11,
+        duration: 2,
+        color: '#aaaaaa'
       }
     ],
     weeks: 12
@@ -123,11 +102,11 @@ document.addEventListener('DOMContentLoaded', function () {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Chart dimensions
-    const chartWidth = canvas.width - 200; // Leave space for task names
+    const chartWidth = canvas.width - 320; // Leave space for task names
     const chartHeight = canvas.height - 80; // Leave space for week labels
     const barHeight = 20;
     const barSpacing = 25;
-    const startX = 180;
+    const startX = 300;
     const startY = 50;
 
     // Draw week headers
@@ -193,9 +172,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const legendY = startY + ganttData.tasks.length * barSpacing + 30;
     const legendItems = [
       { color: '#3b82f6', label: 'Ivan' },
-      { color: '#10b981', label: 'Teammate A' },
-      { color: '#f59e0b', label: 'Teammate B' },
-      { color: '#6366f1', label: 'All Team' }
+      { color: '#10b981', label: 'Husaan' },
+      { color: '#f59e0b', label: 'Chris' },
+      { color: '#6366f1', label: 'Daniel' },
+      { color: '#81141f', label: 'Sanjay'},
+      { color: '#aaaaaa', label: 'Multiple Members'}
     ];
 
     ctx.font = '12px Inter, sans-serif';
