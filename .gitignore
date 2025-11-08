@@ -1,0 +1,18 @@
+datasets/zillow_downloads/**
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Pre-training intermediate/output files
+pre_training/scripts/eda/tables_temp/
+pre_training/final_table/
+pre_training/images/
+
+# OS files
+.DS_Store
+*.swp
+*.swo
+*~
