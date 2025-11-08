@@ -1,4 +1,4 @@
-datasets/zillow_downloads/**
+# datasets/zillow_downloads/**
 .venv/
 __pycache__/
 *.pyc
