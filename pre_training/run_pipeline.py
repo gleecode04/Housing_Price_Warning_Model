@@ -1,17 +1,9 @@
-# -*- coding: utf-8 -*-
-"""
-Driver script to run EDA and Preprocessing sequentially.
-"""
 
 import sys
 import os
 from pathlib import Path
-
-# Change to script directory for imports
 SCRIPT_DIR = Path(__file__).parent
 os.chdir(SCRIPT_DIR)
-
-# Add scripts to path (preprocessing first to avoid conflicts)
 sys.path.insert(0, str(SCRIPT_DIR / 'scripts' / 'preprocessing'))
 sys.path.insert(0, str(SCRIPT_DIR / 'scripts' / 'eda'))
 

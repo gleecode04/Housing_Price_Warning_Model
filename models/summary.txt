@@ -1,0 +1,79 @@
+================================================================================
+MODEL TRAINING SUMMARY
+Housing Price Growth Prediction - Random Forest Regression
+================================================================================
+
+1. MODEL CONFIGURATION
+--------------------------------------------------------------------------------
+
+• Algorithm: Random Forest Regressor
+• Task: Predict year-over-year (YoY) housing price growth percentage
+• Hyperparameters (tuned):
+  - n_estimators: 50
+  - min_samples_split: 50
+  - min_samples_leaf: 15
+  - max_features: 0.4
+  - max_depth: 12
+
+
+2. DATA PREPARATION
+--------------------------------------------------------------------------------
+
+• Source: pre_training/final_table/preprocessed_data.csv
+• Training samples: 172,696
+• Test samples: 43,853
+• Features: 35
+• Target: YoY_Growth_12m (12-month percentage change in home values)
+• Split method: Temporal (chronological split to prevent data leakage)
+
+3. MODEL PERFORMANCE
+--------------------------------------------------------------------------------
+
+Training Metrics:
+• R² Score: 0.6316
+• RMSE: 4.0108%
+• MAE: 2.5854%
+
+Test Metrics:
+• R² Score: 0.5865
+• RMSE: 4.5374%
+• MAE: 2.4466%
+
+Overfitting Assessment:
+• No significant overfitting detected (R² gap = 0.0451)
+
+4. FEATURE IMPORTANCE
+--------------------------------------------------------------------------------
+
+Top 10 Most Important Features:
+• Value_rollstd_12: 0.2009
+• Value_rollmean_12: 0.1442
+• Value_rollstd_6: 0.1248
+• Value_rollmean_3: 0.1205
+• Value_rollstd_3: 0.1142
+• Value_rollmean_6: 0.0587
+• market_temp_index_uc_sfrcondo_month_rollstd_6: 0.0414
+• market_temp_index_uc_sfrcondo_month_rollstd_12: 0.0369
+• price_pc1: 0.0362
+• invt_fs_uc_sfrcondo_sm_month_rollstd_12: 0.0127
+
+5. VISUALIZATIONS GENERATED
+--------------------------------------------------------------------------------
+
+• prediction_vs_actual.png: Scatter plots showing predicted vs actual values
+  for both train and test sets
+• residuals_plot.png: Residual analysis to check model assumptions
+• feature_importance.png: Top 15 features ranked by importance
+• performance_metrics.png: Side-by-side comparison of train vs test metrics
+• predictions_over_time.png: Time series predictions for sample regions
+
+6. MODEL ARTIFACTS
+--------------------------------------------------------------------------------
+
+• Saved model: models/artifacts/random_forest_model.pkl
+• Feature importance: Available in model object
+• All visualizations: models/graphs/
+
+================================================================================
+END OF SUMMARY
+================================================================================

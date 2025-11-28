@@ -1,0 +1,148 @@
+================================================================================
+EDA AND PREPROCESSING REPORT
+Housing Price Growth Prediction Project
+================================================================================
+
+1. datasets and rationale
+
+This analysis predicts year-over-year (YoY) housing price growth at the 
+metropolitan level. Seven Zillow datasets were integrated to capture the 
+multifaceted nature of housing markets:
+
+• Home Value Index (Metro_zhvi_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv)
+  - Primary target variable source: provides base price index for computing 
+    YoY growth rates for the middle-tier market segment
+
+• Sales Data
+  - Metro_median_sale_price_now_uc_sfrcondo_month.csv: Actual transaction 
+    prices, complementary to value index
+  - Metro_mean_sale_to_list_uc_sfrcondo_sm_month.csv: Sale-to-list ratio 
+    indicating market competitiveness and negotiation dynamics
+
+• For-Sale Listings
+  - Metro_mlp_uc_sfrcondo_sm_month.csv: Median listing price reflecting 
+    seller expectations
+  - Metro_invt_fs_uc_sfrcondo_sm_month.csv: Inventory levels indicating 
+    supply conditions
+
+• Days on Market (Metro_mean_doz_pending_uc_sfrcondo_sm_month.csv)
+  - Market velocity indicator; longer days typically correlate with 
+    softening prices
+
+• Market Heat Index (Metro_market_temp_index_uc_sfrcondo_month.csv)
+  - Composite indicator of overall market activity and momentum
+
+These datasets collectively capture price levels, transaction dynamics, 
+supply conditions, market velocity, and overall market health—critical 
+factors for predicting future price growth.
+
+
+2. exploratory data analysis: methods, findings, and motivations
+
+2.1 Data Integration and Feature Engineering
+
+• Transformed datasets from wide format (date columns) to long format, 
+  creating time-series structure
+• Generated target variable: YoY_Growth_12m (12-month percentage change 
+  in home values)
+• Final dataset: 227,289 observations across 895 metropolitan regions 
+  (January 2000 to September 2025)
+
+2.2 Data Quality Assessment
+
+Missing Value Analysis:
+• Overall missing data rate: 32.9%
+• Highest missing rates observed in transaction-level metrics:
+  - mean_sale_to_list: 82.7%
+  - mean_doz_pending: 80.4%
+  - median_sale_price: 64.9%
+• Missing patterns are systematic and time-related, suggesting temporal-aware 
+  imputation is appropriate
+
+Multicollinearity Detection:
+• Correlation heatmap (see correlation_heatmap.png) revealed extreme 
+  correlations (>0.95) among price-level features:
+  - Value ↔ median_sale_price: 0.983
+  - Value ↔ mlp: 0.957
+  - median_sale_price ↔ mlp: 0.960
+• These features capture essentially the same underlying price signal, 
+  creating redundancy that can destabilize models
+
+Target Distribution:
+• Distribution analysis (see yoy_growth_distribution.png) shows relatively 
+  symmetric distribution centered near zero
+• Most regions experience moderate growth with occasional extreme periods
+
+2.3 Target-Linked Feature Analysis
+
+• Generated rankings using Pearson correlation, Spearman correlation, and 
+  mutual information to identify predictive features
+• Lag correlation analysis revealed predictive power at various time lags 
+  (1, 3, 6, 12 months)
+• Findings suggest rolling window statistics could capture momentum and 
+  volatility patterns
+
+2.4 EDA Findings → Preprocessing Motivation
+
+The EDA findings directly motivated three preprocessing interventions:
+
+• Missing Value Imputation: High missing data rates (32.9%) with temporal 
+  patterns → temporal-aware imputation needed
+
+• Rolling Statistics Features: Lag correlation analysis showed predictive 
+  power at various lags → rolling windows can capture momentum/volatility
+
+• PCA on Price Block: Extreme multicollinearity (>0.95) among price features 
+  → dimensionality reduction needed to eliminate redundancy
+
+
+3. preprocessing
+--------------------------------------------------------------------------------
+
+3.1 Missing Value Imputation (Temporal-Aware)
+
+Problem: Dataset contained 32.9% missing values, concentrated in 
+transaction-level metrics. Simple deletion would eliminate substantial 
+data, while naive imputation ignores temporal structure.
+
+Method: Three-stage approach:
+  - Forward fill within each region's time series (captures persistence)
+  - Backward fill (handles early-period missing data)
+  - Median fallback (addresses remaining gaps)
+
+Impact: Reduced missing values by 98.3%, preserving temporal continuity 
+and regional characteristics. Conservative approach propagates existing 
+values rather than introducing synthetic data.
+
+3.2 Rolling Statistics Features
+
+Problem: Raw features capture only point-in-time information, missing 
+trend and volatility signals that may be more predictive of future growth.
+
+Method: Computed trailing rolling statistics (mean and standard deviation) 
+over 3, 6, and 12-month windows for top 5 target-linked features. Applied 
+shift(1) before computing to prevent data leakage.
+
+Impact: Expanded feature set from 13 to 43 columns, introducing momentum 
+and volatility signals that capture market dynamics beyond static price 
+levels. These features encode recent trends and market stability.
+
+3.3 PCA on Price-Level Collinearity Block
+
+Problem: Extreme multicollinearity (>0.95) among price features creates 
+model instability, interpretability issues, and computational inefficiency 
+without information gain.
+
+Method: Applied PCA to three highly correlated price features (Value, 
+median_sale_price, mlp), fitting on training set and applying to both 
+sets to prevent leakage.
+
+Impact: Replaced three redundant features with one composite feature 
+(price_pc1) capturing 89.3% of variance. Improved numerical stability 
+for linear models and provided cleaner representation of price signal. 
+Final dataset: 227,289 observations with 41 features, ready for model 
+training.
+
+================================================================================
+END OF REPORT
+================================================================================

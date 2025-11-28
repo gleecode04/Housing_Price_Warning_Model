@@ -1,0 +1,992 @@
+{
+  "sales": {
+    "Metro_mean_sale_to_list_uc_sfrcondo_sm_month.csv": {
+      "file_path": "datasets/zillow_downloads/sales/Metro_mean_sale_to_list_uc_sfrcondo_sm_month.csv",
+      "file_name": "Metro_mean_sale_to_list_uc_sfrcondo_sm_month.csv",
+      "num_rows": 653,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        {
+          "date_range": "2018-03-31 to 2025-08-31",
+          "num_columns": 90,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "102001",
+        "SizeRank": "0",
+        "RegionName": "United States",
+        "RegionType": "country",
+        "StateName": null,
+        "2018-03-31": 0.978260923323527,
+        "2018-04-30": 0.9816931364473662,
+        "2025-07-31": 0.988492512316507,
+        "2025-08-31": 0.9867471861288072,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 90 date columns exist."
+      }
+    },
+    "Metro_pct_sold_below_list_uc_sfrcondo_sm_month.csv": {
+      "file_path": "datasets/zillow_downloads/sales/Metro_pct_sold_below_list_uc_sfrcondo_sm_month.csv",
+      "file_name": "Metro_pct_sold_below_list_uc_sfrcondo_sm_month.csv",
+      "num_rows": 653,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        {
+          "date_range": "2018-03-31 to 2025-08-31",
+          "num_columns": 90,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "102001",
+        "SizeRank": "0",
+        "RegionName": "United States",
+        "RegionType": "country",
+        "StateName": null,
+        "2018-03-31": 0.6192637366818624,
+        "2018-04-30": 0.5887924649015092,
+        "2025-07-31": 0.5021001657839806,
+        "2025-08-31": 0.5198062029266616,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 90 date columns exist."
+      }
+    },
+    "Metro_mean_sale_price_now_uc_sfrcondo_month.csv": {
+      "file_path": "datasets/zillow_downloads/sales/Metro_mean_sale_price_now_uc_sfrcondo_month.csv",
+      "file_name": "Metro_mean_sale_price_now_uc_sfrcondo_month.csv",
+      "num_rows": 389,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        {
+          "date_range": "2008-02-29 to 2025-09-30",
+          "num_columns": 212,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "102001",
+        "SizeRank": "0",
+        "RegionName": "United States",
+        "RegionType": "country",
+        "StateName": null,
+        "2008-02-29": 248523,
+        "2008-03-31": 250879,
+        "2025-08-31": 504470,
+        "2025-09-30": 498358,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 212 date columns exist."
+      }
+    },
+    "Metro_median_sale_price_now_uc_sfrcondo_month.csv": {
+      "file_path": "datasets/zillow_downloads/sales/Metro_median_sale_price_now_uc_sfrcondo_month.csv",
+      "file_name": "Metro_median_sale_price_now_uc_sfrcondo_month.csv",
+      "num_rows": 389,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        {
+          "date_range": "2008-02-29 to 2025-09-30",
+          "num_columns": 212,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "102001",
+        "SizeRank": "0",
+        "RegionName": "United States",
+        "RegionType": "country",
+        "StateName": null,
+        "2008-02-29": 170500,
+        "2008-03-31": 175000,
+        "2025-08-31": 370000,
+        "2025-09-30": 363032,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 212 date columns exist."
+      }
+    },
+    "Metro_median_sale_to_list_uc_sfrcondo_sm_month.csv": {
+      "file_path": "datasets/zillow_downloads/sales/Metro_median_sale_to_list_uc_sfrcondo_sm_month.csv",
+      "file_name": "Metro_median_sale_to_list_uc_sfrcondo_sm_month.csv",
+      "num_rows": 653,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        {
+          "date_range": "2018-03-31 to 2025-08-31",
+          "num_columns": 90,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "102001",
+        "SizeRank": "0",
+        "RegionName": "United States",
+        "RegionType": "country",
+        "StateName": null,
+        "2018-03-31": 0.9843381477996346,
+        "2018-04-30": 0.9870984238272372,
+        "2025-07-31": 0.9980506822612084,
+        "2025-08-31": 0.9949354174637008,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 90 date columns exist."
+      }
+    },
+    "Metro_sales_count_now_uc_sfrcondo_month.csv": {
+      "file_path": "datasets/zillow_downloads/sales/Metro_sales_count_now_uc_sfrcondo_month.csv",
+      "file_name": "Metro_sales_count_now_uc_sfrcondo_month.csv",
+      "num_rows": 94,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        {
+          "date_range": "2008-02-29 to 2025-09-30",
+          "num_columns": 212,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "102001",
+        "SizeRank": "0",
+        "RegionName": "United States",
+        "RegionType": "country",
+        "StateName": null,
+        "2008-02-29": 203689,
+        "2008-03-31": 235839,
+        "2025-08-31": 337736,
+        "2025-09-30": 326208,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 212 date columns exist."
+      }
+    },
+    "Metro_total_transaction_value_now_uc_sfrcondo_month.csv": {
+      "file_path": "datasets/zillow_downloads/sales/Metro_total_transaction_value_now_uc_sfrcondo_month.csv",
+      "file_name": "Metro_total_transaction_value_now_uc_sfrcondo_month.csv",
+      "num_rows": 94,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        {
+          "date_range": "2008-02-29 to 2025-09-30",
+          "num_columns": 212,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "102001",
+        "SizeRank": "0",
+        "RegionName": "United States",
+        "RegionType": "country",
+        "StateName": null,
+        "2008-02-29": 50621401347,
+        "2008-03-31": 59167052481,
+        "2025-08-31": 170377679920,
+        "2025-09-30": 162568366464,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 212 date columns exist."
+      }
+    },
+    "Metro_pct_sold_above_list_uc_sfrcondo_sm_month.csv": {
+      "file_path": "datasets/zillow_downloads/sales/Metro_pct_sold_above_list_uc_sfrcondo_sm_month.csv",
+      "file_name": "Metro_pct_sold_above_list_uc_sfrcondo_sm_month.csv",
+      "num_rows": 653,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        {
+          "date_range": "2018-03-31 to 2025-08-31",
+          "num_columns": 90,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "102001",
+        "SizeRank": "0",
+        "RegionName": "United States",
+        "RegionType": "country",
+        "StateName": null,
+        "2018-03-31": 0.2270423033744653,
+        "2018-04-30": 0.2524000622544112,
+        "2025-07-31": 0.3025931842577868,
+        "2025-08-31": 0.2884191832188256,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 90 date columns exist."
+      }
+    }
+  },
+  "affordability": {
+    "Metro_affordable_price_downpayment_0.20_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv": {
+      "file_path": "datasets/zillow_downloads/affordability/Metro_affordable_price_downpayment_0.20_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv",
+      "file_name": "Metro_affordable_price_downpayment_0.20_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv",
+      "num_rows": 390,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        {
+          "date_range": "2012-01-31 to 2025-09-30",
+          "num_columns": 165,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "102001",
+        "SizeRank": "0",
+        "RegionName": "United States",
+        "RegionType": "country",
+        "StateName": null,
+        "2012-01-31": 217240.5938992426,
+        "2012-02-29": 218035.2040765948,
+        "2025-08-31": 310822.96424901293,
+        "2025-09-30": 317814.1394026853,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 165 date columns exist."
+      }
+    },
+    "Metro_new_homeowner_income_needed_downpayment_0.20_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv": {
+      "file_path": "datasets/zillow_downloads/affordability/Metro_new_homeowner_income_needed_downpayment_0.20_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv",
+      "file_name": "Metro_new_homeowner_income_needed_downpayment_0.20_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv",
+      "num_rows": 390,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        {
+          "date_range": "2012-01-31 to 2025-09-30",
+          "num_columns": 165,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "102001",
+        "SizeRank": "0",
+        "RegionName": "United States",
+        "RegionType": "country",
+        "StateName": null,
+        "2012-01-31": 37409.4404681543,
+        "2012-02-29": 37338.55001347163,
+        "2025-08-31": 97498.25403116758,
+        "2025-09-30": 95761.29576113152,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 165 date columns exist."
+      }
+    }
+  },
+  "home_value_index": {
+    "Metro_zhvi_uc_sfrcondo_tier_0.67_1.0_sm_sa_month.csv": {
+      "file_path": "datasets/zillow_downloads/home_value_index/Metro_zhvi_uc_sfrcondo_tier_0.67_1.0_sm_sa_month.csv",
+      "file_name": "Metro_zhvi_uc_sfrcondo_tier_0.67_1.0_sm_sa_month.csv",
+      "num_rows": 895,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        {
+          "date_range": "2000-01-31 to 2025-09-30",
+          "num_columns": 309,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "102001",
+        "SizeRank": "0",
+        "RegionName": "United States",
+        "RegionType": "country",
+        "StateName": null,
+        "2000-01-31": 244553.163370151,
+        "2000-02-29": 245099.28703351624,
+        "2025-08-31": 699031.6240209165,
+        "2025-09-30": 699295.7003038581,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 309 date columns exist."
+      }
+    },
+    "County_zhvi_uc_sfrcondo_tier_0.67_1.0_sm_sa_month.csv": {
+      "file_path": "datasets/zillow_downloads/home_value_index/County_zhvi_uc_sfrcondo_tier_0.67_1.0_sm_sa_month.csv",
+      "file_name": "County_zhvi_uc_sfrcondo_tier_0.67_1.0_sm_sa_month.csv",
+      "num_rows": 3076,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        "State",
+        "Metro",
+        "StateCodeFIPS",
+        "MunicipalCodeFIPS",
+        {
+          "date_range": "2000-01-31 to 2025-09-30",
+          "num_columns": 309,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "3101",
+        "SizeRank": "0",
+        "RegionName": "Los Angeles County",
+        "RegionType": "county",
+        "StateName": "CA",
+        "State": "CA",
+        "Metro": "Los Angeles-Long Beach-Anaheim, CA",
+        "StateCodeFIPS": "6",
+        "MunicipalCodeFIPS": "37",
+        "2000-01-31": 409078.6803177916,
+        "2000-02-29": 409556.74167274265,
+        "2025-08-31": 1489537.3798536838,
+        "2025-09-30": 1493423.7276783783,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 309 date columns exist."
+      }
+    },
+    "County_zhvi_uc_sfr_tier_0.33_0.67_sm_sa_month.csv": {
+      "file_path": "datasets/zillow_downloads/home_value_index/County_zhvi_uc_sfr_tier_0.33_0.67_sm_sa_month.csv",
+      "file_name": "County_zhvi_uc_sfr_tier_0.33_0.67_sm_sa_month.csv",
+      "num_rows": 3075,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        "State",
+        "Metro",
+        "StateCodeFIPS",
+        "MunicipalCodeFIPS",
+        {
+          "date_range": "2000-01-31 to 2025-09-30",
+          "num_columns": 309,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "3101",
+        "SizeRank": "0",
+        "RegionName": "Los Angeles County",
+        "RegionType": "county",
+        "StateName": "CA",
+        "State": "CA",
+        "Metro": "Los Angeles-Long Beach-Anaheim, CA",
+        "StateCodeFIPS": "6",
+        "MunicipalCodeFIPS": "37",
+        "2000-01-31": 217308.01572834572,
+        "2000-02-29": 217549.42739529203,
+        "2025-08-31": 908337.3812938548,
+        "2025-09-30": 910748.8589809194,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 309 date columns exist."
+      }
+    },
+    "Metro_zhvi_uc_sfr_tier_0.33_0.67_sm_sa_month.csv": {
+      "file_path": "datasets/zillow_downloads/home_value_index/Metro_zhvi_uc_sfr_tier_0.33_0.67_sm_sa_month.csv",
+      "file_name": "Metro_zhvi_uc_sfr_tier_0.33_0.67_sm_sa_month.csv",
+      "num_rows": 895,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        {
+          "date_range": "2000-01-31 to 2025-09-30",
+          "num_columns": 309,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "102001",
+        "SizeRank": "0",
+        "RegionName": "United States",
+        "RegionType": "country",
+        "StateName": null,
+        "2000-01-31": 123785.75307049118,
+        "2000-02-29": 123996.91319145424,
+        "2025-08-31": 365436.42616978945,
+        "2025-09-30": 365721.07706341334,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 309 date columns exist."
+      }
+    },
+    "Zip_zhvi_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv": {
+      "file_path": "datasets/zillow_downloads/home_value_index/Zip_zhvi_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv",
+      "file_name": "Zip_zhvi_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv",
+      "num_rows": 26310,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        "State",
+        "City",
+        "Metro",
+        "CountyName",
+        {
+          "date_range": "2000-01-31 to 2025-09-30",
+          "num_columns": 309,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "91982",
+        "SizeRank": "1",
+        "RegionName": "77494",
+        "RegionType": "zip",
+        "StateName": "TX",
+        "State": "TX",
+        "City": "Katy",
+        "Metro": "Houston-The Woodlands-Sugar Land, TX",
+        "CountyName": "Fort Bend County",
+        "2000-01-31": 211260.03610337025,
+        "2000-02-29": 211443.39073251255,
+        "2025-08-31": 493001.3306873911,
+        "2025-09-30": 493204.1831028733,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 309 date columns exist."
+      }
+    },
+    "Zip_zhvi_uc_sfr_tier_0.33_0.67_sm_sa_month.csv": {
+      "file_path": "datasets/zillow_downloads/home_value_index/Zip_zhvi_uc_sfr_tier_0.33_0.67_sm_sa_month.csv",
+      "file_name": "Zip_zhvi_uc_sfr_tier_0.33_0.67_sm_sa_month.csv",
+      "num_rows": 26202,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        "State",
+        "City",
+        "Metro",
+        "CountyName",
+        {
+          "date_range": "2000-01-31 to 2025-09-30",
+          "num_columns": 309,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "91982",
+        "SizeRank": "1",
+        "RegionName": "77494",
+        "RegionType": "zip",
+        "StateName": "TX",
+        "State": "TX",
+        "City": "Katy",
+        "Metro": "Houston-The Woodlands-Sugar Land, TX",
+        "CountyName": "Fort Bend County",
+        "2000-01-31": 211652.95926489128,
+        "2000-02-29": 211835.09630322928,
+        "2025-08-31": 493266.5961958205,
+        "2025-09-30": 493471.96864173585,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 309 date columns exist."
+      }
+    },
+    "Metro_zhvi_uc_sfrcondo_tier_0.0_0.33_sm_sa_month.csv": {
+      "file_path": "datasets/zillow_downloads/home_value_index/Metro_zhvi_uc_sfrcondo_tier_0.0_0.33_sm_sa_month.csv",
+      "file_name": "Metro_zhvi_uc_sfrcondo_tier_0.0_0.33_sm_sa_month.csv",
+      "num_rows": 892,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        {
+          "date_range": "2000-01-31 to 2025-09-30",
+          "num_columns": 309,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "102001",
+        "SizeRank": "0",
+        "RegionName": "United States",
+        "RegionType": "country",
+        "StateName": null,
+        "2000-01-31": 59299.117088428895,
+        "2000-02-29": 59391.42137604476,
+        "2025-08-31": 194715.02745886424,
+        "2025-09-30": 194916.86933893172,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 309 date columns exist."
+      }
+    },
+    "Metro_zhvi_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv": {
+      "file_path": "datasets/zillow_downloads/home_value_index/Metro_zhvi_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv",
+      "file_name": "Metro_zhvi_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv",
+      "num_rows": 895,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        {
+          "date_range": "2000-01-31 to 2025-09-30",
+          "num_columns": 309,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "102001",
+        "SizeRank": "0",
+        "RegionName": "United States",
+        "RegionType": "country",
+        "StateName": null,
+        "2000-01-31": 123328.16541730896,
+        "2000-02-29": 123545.13919644128,
+        "2025-08-31": 363688.1490528564,
+        "2025-09-30": 363931.6874247252,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 309 date columns exist."
+      }
+    },
+    "Metro_zhvi_uc_sfrcondo_tier_0.33_0.67_sm_sa_month (1).csv": {
+      "file_path": "datasets/zillow_downloads/home_value_index/Metro_zhvi_uc_sfrcondo_tier_0.33_0.67_sm_sa_month (1).csv",
+      "file_name": "Metro_zhvi_uc_sfrcondo_tier_0.33_0.67_sm_sa_month (1).csv",
+      "num_rows": 895,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        {
+          "date_range": "2000-01-31 to 2025-09-30",
+          "num_columns": 309,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "102001",
+        "SizeRank": "0",
+        "RegionName": "United States",
+        "RegionType": "country",
+        "StateName": null,
+        "2000-01-31": 123328.16541730896,
+        "2000-02-29": 123545.13919644128,
+        "2025-08-31": 363688.1490528564,
+        "2025-09-30": 363931.6874247252,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 309 date columns exist."
+      }
+    },
+    "County_zhvi_uc_sfrcondo_tier_0.67_1.0_sm_sa_month (1).csv": {
+      "file_path": "datasets/zillow_downloads/home_value_index/County_zhvi_uc_sfrcondo_tier_0.67_1.0_sm_sa_month (1).csv",
+      "file_name": "County_zhvi_uc_sfrcondo_tier_0.67_1.0_sm_sa_month (1).csv",
+      "num_rows": 3076,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        "State",
+        "Metro",
+        "StateCodeFIPS",
+        "MunicipalCodeFIPS",
+        {
+          "date_range": "2000-01-31 to 2025-09-30",
+          "num_columns": 309,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "3101",
+        "SizeRank": "0",
+        "RegionName": "Los Angeles County",
+        "RegionType": "county",
+        "StateName": "CA",
+        "State": "CA",
+        "Metro": "Los Angeles-Long Beach-Anaheim, CA",
+        "StateCodeFIPS": "6",
+        "MunicipalCodeFIPS": "37",
+        "2000-01-31": 409078.6803177916,
+        "2000-02-29": 409556.74167274265,
+        "2025-08-31": 1489537.3798536838,
+        "2025-09-30": 1493423.7276783783,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 309 date columns exist."
+      }
+    },
+    "County_zhvi_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv": {
+      "file_path": "datasets/zillow_downloads/home_value_index/County_zhvi_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv",
+      "file_name": "County_zhvi_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv",
+      "num_rows": 3073,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        "State",
+        "Metro",
+        "StateCodeFIPS",
+        "MunicipalCodeFIPS",
+        {
+          "date_range": "2000-01-31 to 2025-09-30",
+          "num_columns": 309,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "3101",
+        "SizeRank": "0",
+        "RegionName": "Los Angeles County",
+        "RegionType": "county",
+        "StateName": "CA",
+        "State": "CA",
+        "Metro": "Los Angeles-Long Beach-Anaheim, CA",
+        "StateCodeFIPS": "6",
+        "MunicipalCodeFIPS": "37",
+        "2000-01-31": 210430.7263793457,
+        "2000-02-29": 210668.67424836275,
+        "2025-08-31": 869195.7736465707,
+        "2025-09-30": 871300.4091408778,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 309 date columns exist."
+      }
+    }
+  },
+  "for_sale_listings": {
+    "Metro_new_pending_uc_sfrcondo_sm_month.csv": {
+      "file_path": "datasets/zillow_downloads/for_sale_listings/Metro_new_pending_uc_sfrcondo_sm_month.csv",
+      "file_name": "Metro_new_pending_uc_sfrcondo_sm_month.csv",
+      "num_rows": 906,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        {
+          "date_range": "2018-03-31 to 2025-09-30",
+          "num_columns": 91,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "102001",
+        "SizeRank": "0",
+        "RegionName": "United States",
+        "RegionType": "country",
+        "StateName": null,
+        "2018-03-31": 192663,
+        "2018-04-30": 224121,
+        "2025-08-31": 268721,
+        "2025-09-30": 260723,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 91 date columns exist."
+      }
+    },
+    "Metro_mlp_uc_sfrcondo_sm_month.csv": {
+      "file_path": "datasets/zillow_downloads/for_sale_listings/Metro_mlp_uc_sfrcondo_sm_month.csv",
+      "file_name": "Metro_mlp_uc_sfrcondo_sm_month.csv",
+      "num_rows": 928,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        {
+          "date_range": "2018-03-31 to 2025-09-30",
+          "num_columns": 91,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "102001",
+        "SizeRank": "0",
+        "RegionName": "United States",
+        "RegionType": "country",
+        "StateName": null,
+        "2018-03-31": 263267,
+        "2018-04-30": 271267,
+        "2025-08-31": 417965,
+        "2025-09-30": 411332,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 91 date columns exist."
+      }
+    },
+    "Metro_new_listings_uc_sfrcondo_sm_month.csv": {
+      "file_path": "datasets/zillow_downloads/for_sale_listings/Metro_new_listings_uc_sfrcondo_sm_month.csv",
+      "file_name": "Metro_new_listings_uc_sfrcondo_sm_month.csv",
+      "num_rows": 927,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        {
+          "date_range": "2018-03-31 to 2025-09-30",
+          "num_columns": 91,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "102001",
+        "SizeRank": "0",
+        "RegionName": "United States",
+        "RegionType": "country",
+        "StateName": null,
+        "2018-03-31": 391819,
+        "2018-04-30": 453879,
+        "2025-08-31": 372082,
+        "2025-09-30": 355233,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 91 date columns exist."
+      }
+    },
+    "Metro_invt_fs_uc_sfrcondo_sm_month.csv": {
+      "file_path": "datasets/zillow_downloads/for_sale_listings/Metro_invt_fs_uc_sfrcondo_sm_month.csv",
+      "file_name": "Metro_invt_fs_uc_sfrcondo_sm_month.csv",
+      "num_rows": 928,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        {
+          "date_range": "2018-03-31 to 2025-09-30",
+          "num_columns": 91,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "102001",
+        "SizeRank": "0",
+        "RegionName": "United States",
+        "RegionType": "country",
+        "StateName": null,
+        "2018-03-31": 1421529,
+        "2018-04-30": 1500195,
+        "2025-08-31": 1382146,
+        "2025-09-30": 1374132,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 91 date columns exist."
+      }
+    }
+  },
+  "days_on_market": {
+    "Metro_mean_listings_price_cut_amt_uc_sfrcondo_sm_month.csv": {
+      "file_path": "datasets/zillow_downloads/days_on_market/Metro_mean_listings_price_cut_amt_uc_sfrcondo_sm_month.csv",
+      "file_name": "Metro_mean_listings_price_cut_amt_uc_sfrcondo_sm_month.csv",
+      "num_rows": 843,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        {
+          "date_range": "2018-03-31 to 2025-09-30",
+          "num_columns": 91,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "102001",
+        "SizeRank": "0",
+        "RegionName": "United States",
+        "RegionType": "country",
+        "StateName": null,
+        "2018-03-31": 14667.568399925114,
+        "2018-04-30": 14945.316700011032,
+        "2025-08-31": 19250.931912222153,
+        "2025-09-30": 18748.7129149535,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 91 date columns exist."
+      }
+    },
+    "Metro_mean_doz_pending_uc_sfrcondo_sm_month.csv": {
+      "file_path": "datasets/zillow_downloads/days_on_market/Metro_mean_doz_pending_uc_sfrcondo_sm_month.csv",
+      "file_name": "Metro_mean_doz_pending_uc_sfrcondo_sm_month.csv",
+      "num_rows": 756,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        {
+          "date_range": "2018-03-31 to 2025-09-30",
+          "num_columns": 91,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "102001",
+        "SizeRank": "0",
+        "RegionName": "United States",
+        "RegionType": "country",
+        "StateName": null,
+        "2018-03-31": 51,
+        "2018-04-30": 48,
+        "2025-08-31": 50,
+        "2025-09-30": 54,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 91 date columns exist."
+      }
+    },
+    "Metro_perc_listings_price_cut_uc_sfrcondo_sm_month.csv": {
+      "file_path": "datasets/zillow_downloads/days_on_market/Metro_perc_listings_price_cut_uc_sfrcondo_sm_month.csv",
+      "file_name": "Metro_perc_listings_price_cut_uc_sfrcondo_sm_month.csv",
+      "num_rows": 928,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        {
+          "date_range": "2018-03-31 to 2025-09-30",
+          "num_columns": 91,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "102001",
+        "SizeRank": "0",
+        "RegionName": "United States",
+        "RegionType": "country",
+        "StateName": null,
+        "2018-03-31": 0.1466661174748287,
+        "2018-04-30": 0.1515452587014164,
+        "2025-08-31": 0.2653277793351214,
+        "2025-09-30": 0.2643145815220412,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 91 date columns exist."
+      }
+    },
+    "Metro_med_listings_price_cut_amt_uc_sfrcondo_sm_month.csv": {
+      "file_path": "datasets/zillow_downloads/days_on_market/Metro_med_listings_price_cut_amt_uc_sfrcondo_sm_month.csv",
+      "file_name": "Metro_med_listings_price_cut_amt_uc_sfrcondo_sm_month.csv",
+      "num_rows": 844,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        {
+          "date_range": "2018-03-31 to 2025-09-30",
+          "num_columns": 91,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "102001",
+        "SizeRank": "0",
+        "RegionName": "United States",
+        "RegionType": "country",
+        "StateName": null,
+        "2018-03-31": 7833.333333333333,
+        "2018-04-30": 8533.333333333334,
+        "2025-08-31": 10000,
+        "2025-09-30": 10000,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 91 date columns exist."
+      }
+    }
+  },
+  "market_heat": {
+    "Metro_market_temp_index_uc_sfrcondo_month.csv": {
+      "file_path": "datasets/zillow_downloads/market_heat/Metro_market_temp_index_uc_sfrcondo_month.csv",
+      "file_name": "Metro_market_temp_index_uc_sfrcondo_month.csv",
+      "num_rows": 928,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        {
+          "date_range": "2018-01-31 to 2025-09-30",
+          "num_columns": 93,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "102001",
+        "SizeRank": "0",
+        "RegionName": "United States",
+        "RegionType": "country",
+        "StateName": null,
+        "2018-01-31": 50,
+        "2018-02-28": 51,
+        "2025-08-31": 51,
+        "2025-09-30": 50,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 93 date columns exist."
+      }
+    }
+  },
+  "new_construction": {
+    "Metro_new_con_sales_count_raw_uc_sfrcondo_month.csv": {
+      "file_path": "datasets/zillow_downloads/new_construction/Metro_new_con_sales_count_raw_uc_sfrcondo_month.csv",
+      "file_name": "Metro_new_con_sales_count_raw_uc_sfrcondo_month.csv",
+      "num_rows": 393,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        {
+          "date_range": "2018-01-31 to 2025-08-31",
+          "num_columns": 92,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "102001",
+        "SizeRank": "0",
+        "RegionName": "United States",
+        "RegionType": "country",
+        "StateName": null,
+        "2018-01-31": 41383,
+        "2018-02-28": 42663,
+        "2025-07-31": 40718,
+        "2025-08-31": 41132,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 92 date columns exist."
+      }
+    },
+    "Metro_new_con_median_sale_price_per_sqft_uc_sfrcondo_month.csv": {
+      "file_path": "datasets/zillow_downloads/new_construction/Metro_new_con_median_sale_price_per_sqft_uc_sfrcondo_month.csv",
+      "file_name": "Metro_new_con_median_sale_price_per_sqft_uc_sfrcondo_month.csv",
+      "num_rows": 201,
+      "columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        {
+          "date_range": "2018-01-31 to 2025-08-31",
+          "num_columns": 92,
+          "note": "This denotes a date range and columns are separated by monthly intervals"
+        }
+      ],
+      "sample_row": {
+        "RegionID": "102001",
+        "SizeRank": "0",
+        "RegionName": "United States",
+        "RegionType": "country",
+        "StateName": null,
+        "2018-01-31": 134.86469265367316,
+        "2018-02-28": 135.2941176470588,
+        "2025-07-31": 204.7846889952153,
+        "2025-08-31": 206.0632688927944,
+        "_note": "Sample row shows first 2 and last 2 date columns. Total of 92 date columns exist."
+      }
+    }
+  }
+}
