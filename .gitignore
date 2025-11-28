@@ -1,4 +1,4 @@
-# datasets/zillow_downloads/**
+datasets/zillow_downloads/**
 .venv/
 __pycache__/
 *.pyc
@@ -10,6 +10,8 @@ __pycache__/
 pre_training/scripts/eda/tables_temp/
 pre_training/final_table/
 pre_training/images/
+
+
 
 # OS files
 .DS_Store
